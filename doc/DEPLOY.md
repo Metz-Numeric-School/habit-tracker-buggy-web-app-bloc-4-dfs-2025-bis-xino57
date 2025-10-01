@@ -141,3 +141,39 @@ Cela m'a ajouté le script suivant:
 Voici la capture d'écran:
 
    ![alt text](image-10.png)
+
+
+
+J'ai ensuite ouvert PHPMyAdmin et j'ai apporté toutes mes données sql.
+Pour ce faire, je me suis rendu dans l'onglet "DataBase" et j'ai ouvert phpMyAdmin. 
+
+
+![alt text](image-11.png)
+
+
+Je l'ai ouvert en public access et j'ai tapé mon nom d'utilisateur et mon mot passe qui m'ont été donné lorsque j'ai crée une base de donnée
+
+Puis j'ai créer ma base de donnée en insérant en requête sql les donnée du fichier database.sql. Comme vous pouvez le voir dans la figure numéro 12.
+
+![alt text](image-12.png)
+
+
+Après modification du .env initiale on peut accèder à l'applicatio et se connecter avec un compte administrateur :
+
+      ```env
+         DB_USER=sql_172_17_4_16
+         DB_PASSWORD=5084d15d490a58
+         DB_PORT=3306
+         DB_HOST=127.0.0.1
+         DB_NAME=sql_172_17_4_16
+         DB_USERNAME=sql_172_17_4_16
+         DB_PASSWORD=5084d15d490a58
+      
+      ```
+
+
+Comme vous pouvez voir sur la figure numéro 13
+
+![alt text](image-13.png)
+
+
