@@ -20,7 +20,7 @@ class RegisterController extends AbstractController
 
         if(!empty($_POST['user'])) {
 
-            $user = $_POST['user'];
+            $user = htmlspecialchars($_POST['user']);
             
             if(empty($user['lastname']))
                 $errors['lastname'] = 'Le Nom est obligatoire';
