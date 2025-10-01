@@ -26,6 +26,13 @@ Après, j’ai répondu aux différentes questions lorsque l’installation a d�
 
 J’ai répondu aux trois questions par **“Yes”** afin de lancer l’installation complète.
 
+Pour me connecter j'utilises les identifiant la:
+
+aaPanel Internet Address: https://90.80.241.65:35072/0b55a68c
+aaPanel Internal Address: https://172.17.4.16:35072/0b55a68c
+username: twrv1c6d
+password: e33c3285
+
 Ensuite, je me connecte avec mes identifiants qui ont été fournis par aaPanel. Lorsque je suis sur aaPanel, j’ai dû choisir un des serveurs **LAMP (LNMP)**, car il possède **Nginx**, plus rapide qu’**Apache**.
 
 Ici vous avez le formulaire de connexion:
