@@ -28,6 +28,9 @@ J’ai répondu aux trois questions par **“Yes”** afin de lancer l’install
 
 Ensuite, je me connecte avec mes identifiants qui ont été fournis par aaPanel. Lorsque je suis sur aaPanel, j’ai dû choisir un des serveurs **LAMP (LNMP)**, car il possède **Nginx**, plus rapide qu’**Apache**.
 
+![alt text](image-3.png)
+
+
 Dans l’attente du téléchargement, j’ai corrigé les différentes **failles de sécurité** sur le déploiement.
 
 Pour créer la documentation de mes commits, j’ai configuré **Git Cliff** pour gérer le **CHANGELOG**, voici comment j’ai procédé :
@@ -46,6 +49,14 @@ Cela me permet de faire une documentation pour mes commits et de déployer avec 
 
 
 Ensuite, lorsque les failles sont corrigées, j’ajoute le site dans aaPanel qui se trouve dans l'onglet **WebSite**. J’ajoute le **nom de domaine** de mon serveur, qui est l’adresse IP de mon **VPS**, si on a un **FTP**, on peut en ajouter un. Le FTP est le protocole de transfert de fichiers d’un ordinateur à un autre via un réseau internet. Ensuite, je suis allé dans l’onglet **Configure > Anti-XSS** pour la **désactiver**. Ensuite, je configure la **version de PHP** qui est trouvable dans aaPanel.  
+
+![alt text](image-4.png)
+
+Voici la configuration du site:
+
+![alt text](image-5.png)
+
+
 Après, je vais dans l’onglet **Base de données** et je crée ma base de données, puis j’enregistre les éléments suivants :
 
 - Nom de la base de données
@@ -53,6 +64,9 @@ Après, je vais dans l’onglet **Base de données** et je crée ma base de donn
 - Utilisateur de la base de données
     
 - Mot de passe de la base de données
+
+
+![alt text](image-6.png)
     
 
 Ensuite, je suis retourné dans ma machine virtuelle (VPS), à la racine de mon VPS en me déplaçant avec `cd /`, puis je suis allé dans mon dossier qui se nomme `var` en faisant `cd var`. Puis je crée mon dossier `depot_git` avec la commande `mkdir depot_git`, puis la création de mon dépôt standard dans mon VPS grâce à `git init --bare`. Donc mon dossier `depot_git` ne contient que l’historique et les données de Git, c’est-à-dire le contenu du dossier `.git`.
