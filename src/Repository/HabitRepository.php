@@ -26,7 +26,7 @@ class HabitRepository extends AbstractRepository
         return EntityMapper::mapCollection(Habit::class, $query->fetchAll());
     }
 
-     /**
+    /**
      * Compte le nombre d'habitudes actives pour un utilisateur
      */
     public function countByUser(int $userId): int
@@ -34,18 +34,18 @@ class HabitRepository extends AbstractRepository
         $stmt = $this->getConnection()->prepare("SELECT COUNT(*) as total FROM habits WHERE user_id = :user_id");
         $stmt->execute(['user_id' => $userId]);
         $row = $stmt->fetch();
-        return (int)($row['total'] ?? 0);
+        return (int) ($row['total'] ?? 0);
     }
 
     public function insert(array $data = array())
     {
-        $name = $data['name'];   
+        $name = $data['name'];
         $description = $data['description'];
 
         // Requête construite par concaténation (vulnérable)
-        $sql = "INSERT INTO habits (user_id, name, description, created_at) VALUES (" 
-            . $data['user_id'] . ", '" 
-            . $name . "', '" 
+        $sql = "INSERT INTO habits (user_id, name, description, created_at) VALUES ("
+            . $data['user_id'] . ", '"
+            . $name . "', '"
             . $description . "', NOW())";
 
         $query = $this->getConnection()->query($sql);
@@ -64,12 +64,13 @@ class HabitRepository extends AbstractRepository
             SELECT DISTINCT log_date
             FROM habit_logs hl
             JOIN habits h ON hl.habit_id = h.id
-            WHERE h.user_id = :user_id AND hl.status = 1
+            WHERE h.user_id = ? AND hl.status = 1
             ORDER BY log_date DESC
         ";
-
+        
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['user_id' => $userId]);
+        $stmt->bindParam(1, $userId);
+        $stmt->execute();
         $dates = $stmt->fetchAll(\PDO::FETCH_COLUMN);
 
         $streak = 0;
