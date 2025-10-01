@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.1] - 2025-10-01
+
+### 🐛 Bug Fixes
+
+- Remove htmlspecialchar
+
 ## [0.3.0] - 2025-10-01
 
 ### 🚀 Features
