@@ -2,11 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2025-10-01
+
+### 🚀 Features
+
+- Ajout des reponses aux différentres questions de déploiement
+- Ajout des images en supplément pour le déploiement
+- Ajout des notes dans la fiche de déployements et ajout dans le gitignore le .env
+- Ajout de dans la doc
+- Ajout des identifiant pour se connecter a aapanel
+- .env example
+
+### 🐛 Bug Fixes
+
+- Rajout des points qui manquaient dans la doc de deploiement
+- Ajout du mot de passe haché pour la sécurisation lorsque que l'utilisateur enregistre son compte
+- Correction des injections XSS sur la page login lorsqu un utilisateur se connecte et ajout aussi sur le fomulaire d inscription
+- Corrections des injections sql
+- Documentation finalise
+
 ## [0.2.0] - 2025-10-01
 
 ### 🚀 Features
 
 - Ajout du package vandor
+- Nouvelle version stable 0.2.0
 
 ## [0.1.0] - 2025-10-01
 
