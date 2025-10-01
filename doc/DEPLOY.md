@@ -9,9 +9,9 @@ Premièrement, j’ai dû me connecter à ma VM **distante** en SSH, ce qui faci
 Je tape mon utilisateur `root@<ip>`, puis il me demande mon mot de passe afin de me connecter à mon **VPS**.
 
 Pour mon cas ce sont les identifiant: ssh root@172.17.4 
-Ensuite je tape mon mot de passe
+Ensuite je tape mon mot de passe qui m'a été attribué.
 
-Premièrement, j’ai téléchargé le module **aaPanel**. aaPanel est un module d’hébergement gratuit et open-source conçu pour simplifier la gestion des serveurs sous Linux. Il me permet d’avoir une interface graphique intuitive et légère qui permet de gérer les sites web, les bases de données et d’autres services.
+Premièrement, j’ai téléchargé le module **aaPanel**. aaPanel est un module d’hébergement gratuit et open-source conçu pour simplifier la gestion des serveurs sous Linux. Il me permet d’avoir une interface graphique intuitive qui permet de gérer les sites web.
 
 J’ai utilisé la commande ci-dessous pour télécharger aaPanel dans sa version gratuite :
 
@@ -28,10 +28,12 @@ J’ai répondu aux trois questions par **“Yes”** afin de lancer l’install
 
 Ensuite, je me connecte avec mes identifiants qui ont été fournis par aaPanel. Lorsque je suis sur aaPanel, j’ai dû choisir un des serveurs **LAMP (LNMP)**, car il possède **Nginx**, plus rapide qu’**Apache**.
 
+Ici vous avez le formulaire de connexion:
+
 ![alt text](image-3.png)
 
 
-Dans l’attente du téléchargement, j’ai corrigé les différentes **failles de sécurité** sur le déploiement.
+Dans l’attente du téléchargement, on peut corrigé les différentes **failles de sécurité** sur le déploiement.
 
 Pour créer la documentation de mes commits, j’ai configuré **Git Cliff** pour gérer le **CHANGELOG**, voici comment j’ai procédé :
 
@@ -51,10 +53,6 @@ Cela me permet de faire une documentation pour mes commits et de déployer avec 
 Ensuite, lorsque les failles sont corrigées, j’ajoute le site dans aaPanel qui se trouve dans l'onglet **WebSite**. J’ajoute le **nom de domaine** de mon serveur, qui est l’adresse IP de mon **VPS**, si on a un **FTP**, on peut en ajouter un. Le FTP est le protocole de transfert de fichiers d’un ordinateur à un autre via un réseau internet. Ensuite, je suis allé dans l’onglet **Configure > Anti-XSS** pour la **désactiver**. Ensuite, je configure la **version de PHP** qui est trouvable dans aaPanel.  
 
 ![alt text](image-4.png)
-
-Voici la configuration du site:
-
-![alt text](image-5.png)
 
 
 Après, je vais dans l’onglet **Base de données** et je crée ma base de données, puis j’enregistre les éléments suivants :
@@ -77,6 +75,8 @@ Lorsque cela est fait, je retourne dans **VS Code**, j’ouvre mon terminal et j
 git remote add deploy root@172.17.4.16:/var/depot_git
 git push -u deploy <tag>
 ```
+![alt text](image-7.png)
+![alt text](image-8.png)
 
 Dans le tag je remplace mes tags qui ont été crée aupréalable par exemple (0.1.0, 0.2.0, ect...) 
 
@@ -104,6 +104,9 @@ nano deploy.sh
 # Contenu :
 git --work-tree=/www/wwwroot/172.17.4.16 --git-dir=/var/depot_git checkout -f $1
 ```
+Voir l'image pour voir toutes les commandes qui ont été réalisé:
+
+![alt text](image-9.png)
 
 Lorsque cela est fait, je retourne dans aaPanel afin de terminer ma configuration de mon site. Tout d’abord, je crée le fichier **.env** et je l’enregistre directement dans l’onglet **“File”**.
 
@@ -115,3 +118,26 @@ DB_NAME=sql_172_17_4_16
 ```
 
 Et pour finir, je mets en place le bon **site directory**, qui se trouve dans l’onglet **Site directory > Running directory**, et je mets mon dossier **/public** là où il y a mon `index.php`. Cela permet au site de trouver directement mon `index.php`.
+
+Voici la configuration du site:
+
+![alt text](image-5.png)
+
+
+Dans la config de mon site pour résoudre les 404 j'ai du ajouter URL Rewrite pour la bonne direction de route. Dans la liste déroulante, j'ai ajouté MVC.
+
+Cela m'a ajouté le script suivant:
+
+   ```php
+   location /{
+      if (!-e $request_filename) {
+         rewrite  ^(.*)$  /index.php/$1  last;
+         break;
+      }
+   }
+   ```
+
+
+Voici la capture d'écran:
+
+   ![alt text](image-10.png)
